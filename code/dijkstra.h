@@ -14,6 +14,7 @@ using namespace std;
 #define stads 30
 
 
+// node structure contains stadiums and whether or not they have been visited
 class Node {
 private:
   string data;
@@ -23,10 +24,11 @@ public:
   Node(string s);
   ~Node();
   string getData();
-  void setData(string s);
+  bool getVisited();
 };
 
 
+// edge structure contains start stadium, end stadium, and and distance between stadiums
 class Edge {
 private:
   Node* a;  // start node
@@ -41,7 +43,7 @@ public:
 };
 
 
-// graph structure contains stadiums (nodes) and distance between stadiums (edges)
+// graph structure contains stadiums (nodes) and connection between stadiums (edges)
 class Graph {
 public:
   Graph();

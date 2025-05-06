@@ -59,6 +59,7 @@ void Graph::removeEdge(Edge* e) {
 // constructor - build nodes
 Node::Node(string s) {
   data = s;
+  visited = false;
 }
 
 // destructor
@@ -66,6 +67,10 @@ Node::~Node() {}
 
 string Node::getData() {
   return data;
+}
+
+bool Node::getVisited() {
+  return visited;
 }
 
 
