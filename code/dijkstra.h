@@ -7,11 +7,12 @@
 #include <queue>
 #include <set>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
 // Number of vertices (teams)
-#define stads 30
+#define stads 5
 
 
 // node structure contains stadiums and whether or not they have been visited
@@ -54,6 +55,9 @@ public:
   void addEdge(Edge* e);
   void removeNode(Node* n);
   void removeEdge(Edge* n);
+
+  // main Dijkstra's algorithm
+  vector<int*> dijkstra(Graph* graph);
   
 private:
   vector<Node*> nodes;

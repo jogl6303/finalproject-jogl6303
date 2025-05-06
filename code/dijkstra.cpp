@@ -10,6 +10,7 @@
 #include <queue>
 #include <set>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
@@ -52,6 +53,41 @@ void Graph::removeEdge(Edge* e) {
       break;
     }
   }
+}
+
+// PRIMARY ALGORITHM //
+vector<int*> dijkstra(Graph* graph) {
+  
+  Graph* g = graph;
+  vector<int> distances(stads);
+  
+  for (int i = 0, i < stads, i++) {
+    double minDist = numeric_limits<double>::infinity();
+    double x = -1;
+    for (int j = 0, j < stads, j++) {
+      if (g->getNodes[i]->visited == false && distances[i] < minDist) {
+        minDist = distances[i];
+        x = j;
+      }
+    }
+    
+    if (x = -1) {
+      break;
+    }
+
+    g->getNodes[x]->visited = true;
+
+    for (int k = 0, k < stads, k++) {
+      if (g->getEdges[k]->distance != 0 && g->getNodes[k]->visited = false) {
+        double alternate = distances[x] + g->getEdges[k]->distance;
+        if (alternate < distances[k]) {
+          distances[k] = alternate;
+        }
+      }
+    }
+  }
+
+  return distances;
 }
 
 
