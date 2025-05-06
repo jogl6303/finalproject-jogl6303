@@ -10,35 +10,31 @@
 #include <queue>
 #include <set>
 #include <vector>
-#include <limits>
+#include <climits>
 
 using namespace std;
 
 // Graph class functions
 // constructor - build graph
-Graph::Graph() {}
+Graph::Graph() {
+  size = STADS;
+  adjMat[STADS][STADS] = {0};
+  nodeDatas = vector<string>(STADS);
+}
 
 // destructor
 Graph::~Graph() {}
 
-mat* Graph::addGraph(int size) {
-  mat* g(new Graph);
-  g->size = size;
-  g->adjMat[stads][stads] = {0};
-  g->nodeDatas[] = {''};
-
-  return g;
-}
 
 
-void Graph::addNode(mat* g, int vertex, char data) {
+void Graph::addNode(Graph* g, int vertex, string data) {
   if (vertex >= 0 && vertex < g->size) {
     g->nodeDatas[vertex] = data;
   }
 }
 
-void Graph::addEdge(Graph g, int a, int b, int distance); {
-  if (a >= 0 && a < g->size && b >= 0 && v < g->size) {
+void Graph::addEdge(Graph* g, int a, int b, int distance) {
+  if (a >= 0 && a < g->size && b >= 0 && b < g->size) {
     g->adjMat[a][b] = distance;
     g->adjMat[b][a] = distance;
   }
@@ -51,13 +47,13 @@ int Graph::minDist(int distances[], bool visiteds[], int size) {
   for (int i = 0; i < size; i++) {
     if (!visiteds[i] && distances[i] <= min) {
       min = distances[i];
-      min_index = i;
+      minIndex = i;
     }
   }
-  return min_index;
+  return minIndex;
 }
 
-void Graph::dijkstra(int graph[stads][stads], char start) {
+void Graph::dijkstra(Graph* g, string start) {
 
   int start_vertex = -1;
 
@@ -78,7 +74,7 @@ void Graph::dijkstra(int graph[stads][stads], char start) {
   distances[start_vertex] = 0;
 
   for (int i = 0; i < g->size - 1; i++) {
-    int a = minDist(distances, visiteds, g->size)
+    int a = minDist(distances, visiteds, g->size);
     visiteds[a] = true;
 
     for (int b = 0; b < g->size; b++) {
@@ -91,7 +87,7 @@ void Graph::dijkstra(int graph[stads][stads], char start) {
   cout << "Starting Team: " << start << endl << endl;
 
   for (int i = 0; i < g->size; i++) {
-    cout << "Distance from %c to %c: %d" << start, g->nodeDatas[i], distances[i];
+    cout << "Distance from " << start << " to " << g->nodeDatas[i] << ": " << distances[i] << endl;
   }
 }
 

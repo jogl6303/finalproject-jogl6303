@@ -7,12 +7,12 @@
 #include <queue>
 #include <set>
 #include <vector>
-#include <limits>
+#include <climits>
 
 using namespace std;
 
 // Number of nodes (stadiums to visit)
-#define stads 5
+#define STADS 5
 
 /*
 class Node {
@@ -46,24 +46,18 @@ public:
 
 
 
-struct mat {
-  int adjMat[stads][stads];
-  int size;
-  vector<char*> nodeDatas[];
-};
 
 // graph class contains stadiums (nodes) and connection between stadiums (edges)
 class Graph {
 public:
   Graph();
   ~Graph();
-  Graph* addGraph(int size);
   void addNode(Graph* g, int vertex, string data);
   void addEdge(Graph* g, int a, int b, int distance);
   int minDist(int distances[], bool visiteds[], int size);
 
   // main Dijkstra's algorithm
-  void dijkstra(int graph[stads][stads], string start);
+  void dijkstra(Graph* graph, string start);
   
   /*
   vector<Node*> getNodes();
@@ -76,6 +70,9 @@ public:
 
   
 private:
+  int adjMat[STADS][STADS];
+  int size;
+  vector<string> nodeDatas;
 
   //vector<Node*> nodes;
   //vector<Edge*> edges;
