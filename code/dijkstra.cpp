@@ -57,7 +57,7 @@ int Graph::minDist(int distances[], bool visiteds[], int size) {
   return min_index;
 }
 
-void Graph::dijkstra(int graph[][], char start) {
+void Graph::dijkstra(int graph[stads][stads], char start) {
 
   int start_vertex = -1;
 

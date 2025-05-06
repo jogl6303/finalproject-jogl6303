@@ -47,10 +47,10 @@ public:
 
 
 struct mat {
-  int adjMat[][];
-  vector<string*> nodeDatas[];
+  int adjMat[stads][stads];
   int size;
-}
+  vector<char*> nodeDatas[];
+};
 
 // graph class contains stadiums (nodes) and connection between stadiums (edges)
 class Graph {
@@ -63,7 +63,7 @@ public:
   int minDist(int distances[], bool visiteds[], int size);
 
   // main Dijkstra's algorithm
-  void dijkstra(int graph[][], string start);
+  void dijkstra(int graph[stads][stads], string start);
   
   /*
   vector<Node*> getNodes();
