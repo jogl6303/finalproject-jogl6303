@@ -9,51 +9,32 @@
 using namespace std;
 
 
-Graph* buildGraph() {
-  Graph* Teams(new Graph());
-
-  Node* ang(new Node("Angels"));
-  Node* ast(new Node("Astros"));
-  Node* ath(new Node("Athletics"));
-  Node* mar(new Node("Mariners"));
-  Node* ran(new Node("Rangers"));
-
-  Teams->addNode(ang);
-  Teams->addNode(ast);
-  Teams->addNode(ath);
-  Teams->addNode(mar);
-  Teams->addNode(ran);
-
-  Edge* anho(new Edge(ang, ast, 1532));
-  Edge* ansa(new Edge(ang, ath, 412));
-  Edge* anse(new Edge(ang, mar, 1163));
-  Edge* anar(new Edge(ang, ran, 1403));
-
-  Edge* hosa(new Edge(ast, ath, 1940));
-  Edge* hose(new Edge(ast, mar, 2316));
-  Edge* hoar(new Edge(ast, ran, 258));
-
-  Edge* sase(new Edge(ath, mar, 752));
-  Edge* saar(new Edge(ath, ran, 1715));
-
-  Edge* sear(new Edge(mar, ran, 2088));
-
-  Teams->addEdge(anho);
-  Teams->addEdge(ansa);
-  Teams->addEdge(anse);
-  Teams->addEdge(anar);
-  Teams->addEdge(hosa);
-  Teams->addEdge(hose);
-  Teams->addEdge(hoar);
-  Teams->addEdge(sase);
-  Teams->addEdge(saar);
-  Teams->addEdge(sear);
-
-  return Teams;
-};
 
 int main() {
-    Graph* Teams = buildGraph();
-    Teams->getNodes();
+    mat* Teams = Graph::addGraph(stads);
+
+    Graph::addNode(Teams, 0, "Mariners");
+    Graph::addNode(Teams, 1, "Angels");
+    Graph::addNode(Teams, 2, "Astros");
+    Graph::addNode(Teams, 3, "Athletics");
+    Graph::addNode(Teams, 4, "Rangers");
+
+    Graph::addEdge(Teams, 0, 1, 1163);
+    Graph::addEdge(Teams, 0, 2, 2316);
+    Graph::addEdge(Teams, 0, 3, 752);
+    Graph::addEdge(Teams, 0, 4, 2088);
+
+    Graph::addEdge(Teams, 1, 2, 1532);
+    Graph::addEdge(Teams, 1, 3, 412);
+    Graph::addEdge(Teams, 1, 4, 1403);
+
+    Graph::addEdge(Teams, 2, 3, 1940);
+    Graph::addEdge(Teams, 2, 4, 258);
+
+    Graph::addEdge(Teams, 3, 4, 1715);
+
+    Graph::dijkstra(*Teams, "Mariners");
+
     return 0;
+
 }

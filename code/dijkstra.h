@@ -11,11 +11,10 @@
 
 using namespace std;
 
-// Number of vertices (teams)
+// Number of nodes (stadiums to visit)
 #define stads 5
 
-
-// node structure contains stadiums and whether or not they have been visited
+/*
 class Node {
 private:
   string data;
@@ -26,9 +25,10 @@ public:
   ~Node();
   string getData();
   bool getVisited();
-};
+  friend std::ostream& operator<<(std::ostream& out, Node node);
+};*/
 
-
+/*
 // edge structure contains start stadium, end stadium, and and distance between stadiums
 class Edge {
 private:
@@ -41,29 +41,53 @@ public:
   Node* getStart();
   Node* getEnd();
   int getDistance();
-};
+  friend std::ostream& operator<<(std::ostream& out, Edge edge);
+};*/
 
 
-// graph structure contains stadiums (nodes) and connection between stadiums (edges)
+
+struct mat {
+  int adjMat[][];
+  vector<string*> nodeDatas[];
+  int size;
+}
+
+// graph class contains stadiums (nodes) and connection between stadiums (edges)
 class Graph {
 public:
   Graph();
   ~Graph();
-  vector<Node*> getNodes();
-  vector<Edge*> getEdges();
-  void addNode(Node* n);
-  void addEdge(Edge* e);
-  void removeNode(Node* n);
-  void removeEdge(Edge* n);
+  Graph* addGraph(int size);
+  void addNode(Graph* g, int vertex, string data);
+  void addEdge(Graph* g, int a, int b, int distance);
+  int minDist(int distances[], bool visiteds[], int size);
 
   // main Dijkstra's algorithm
-  vector<int*> dijkstra(Graph* graph);
+  void dijkstra(int graph[][], string start);
+  
+  /*
+  vector<Node*> getNodes();
+  vector<Edge*> getEdges();
+  void removeNode(Node* n);
+  void removeEdge(Edge* n);
+  friend std::ostream& operator<<(std::ostream& out, Graph graph);
+  */
+
+
   
 private:
-  vector<Node*> nodes;
-  vector<Edge*> edges;
-  vector<Node*> search_nodes;
-  vector<Edge*> search_edges;
+
+  //vector<Node*> nodes;
+  //vector<Edge*> edges;
+  //vector<Node*> search_nodes;
+  //vector<Edge*> search_edges;
+  //string data;
+
+  //int adjMat[][];
+  //vector<char> nodeDatas[];
+  //int size;
+
+
 
 };
 
